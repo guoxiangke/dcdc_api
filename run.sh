@@ -14,7 +14,7 @@
 
 	if [ -z "$3" ]
 	then
-	    GitBranch="master"
+	    GitBranch="drupal"
 	else
 		GitBranch=$3
 	fi
