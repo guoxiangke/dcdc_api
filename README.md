@@ -5,7 +5,7 @@
 ## start it
 	docker-compose -p ddAPI up -d  --build --remove-orphans --force-recreate
 ## stop it
-	docker-compose -p drupal8 down
+	docker-compose -p ddAPI down --remove-orphans
 
 
 ## simplehtmldom libraries bug!
