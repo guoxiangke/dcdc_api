@@ -29,12 +29,10 @@ services:
         - ./docker/php/uploads.ini:/usr/local/etc/php/conf.d/uploads.ini:ro
         # change /var/www/html => /var/www/drupal/web
         - ./docker/apache2/000-default.conf:/etc/apache2/sites-enabled/000-default.conf
-        # - drupal_private_files:/var/www/drupal/private_file
         - drupal_config:/var/www/drupal/config
         - drupal_files:/var/www/drupal/web/sites/default/files
         - ./drupal/web/modules/custom:/var/www/drupal/web/modules/custom
         - ./drupal/web/themes/custom:/var/www/drupal/web/themes/custom
-        # - ./drupal/web/libraries:/var/www/drupal/web/libraries
         - ./drupal/settings.php:/var/www/drupal/web/sites/default/settings.php
         # bugs
         - ./drupal/helper.inc:/var/www/drupal/web/modules/contrib/simplehtmldom/helper.inc
