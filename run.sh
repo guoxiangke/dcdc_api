@@ -9,3 +9,4 @@
 	docker-compose -p $ProjectName  up -d  --build --remove-orphans --force-recreate
 
 	docker restart a-nginx a-nginx-gen
+	docker-compose -p $ProjectName restart drupal
