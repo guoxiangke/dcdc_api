@@ -4,8 +4,8 @@ services:
    db:
      image: mariadb:latest
      volumes:
-       - db_data:/var/lib/mysql
-       - "./sql:/sql:ro"
+       - ./sql/data:/var/lib/mysql
+       - /tmp:/sql:ro
      restart: always
      network_mode: "bridge"
      environment:
