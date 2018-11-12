@@ -1,7 +1,7 @@
 # docker-compose run Drupal 8 with drupal-composer/drupal-project
 
 ## build it!
-	docker build -t="drupal:composer" .
+	docker build -t="guoxiangke/ddapi" .
 ## start it
 	docker-compose -p ddAPI up -d  --build --remove-orphans --force-recreate
 ## stop it

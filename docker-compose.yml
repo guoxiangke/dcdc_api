@@ -19,10 +19,10 @@ services:
         - db
      links:
         - db:mysql
-     # image: guoxiangke/ddapi
-     build: .
-     # ports:
-     #   - "80"
+     image: guoxiangke/ddapi
+     # build: .
+     ports:
+       - "8082"
      network_mode: "bridge"
      restart: always
      volumes:
