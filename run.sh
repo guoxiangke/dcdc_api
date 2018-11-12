@@ -10,3 +10,5 @@
 
 	docker restart a-nginx a-nginx-gen
 	docker-compose -p $ProjectName restart drupal
+	sleep 5
+	docker restart a-nginx

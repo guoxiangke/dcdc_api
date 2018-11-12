@@ -6,6 +6,7 @@ RUN set -ex; \
 	apt-get update; \
 	apt-get install -y --no-install-recommends \
 		git \
+    vim \
 	; \
 	apt-get purge -y --auto-remove -o APT::AutoRemove::RecommendsImportant=false; \
 	rm -rf /var/lib/apt/lists/*  /var/www/html ; \
@@ -18,4 +19,10 @@ RUN mkdir /var/www/drupal/config ; \
 COPY ./drupal/composer.json  /var/www/drupal/composer.json
 
 WORKDIR /var/www/drupal
-RUN composer install --no-dev --no-interaction
+RUN composer install \
+    --no-dev \
+    --ignore-platform-reqs \
+    --no-interaction \
+    --no-plugins \
+    --no-scripts \
+    --prefer-dist
