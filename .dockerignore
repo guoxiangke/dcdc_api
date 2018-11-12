@@ -1,0 +1,7 @@
+.git/
+.mysql/
+vendor/
+.DS_Store
+.idea/
+sql
+drupal/web/sites/default/files
