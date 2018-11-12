@@ -19,8 +19,8 @@ services:
         - db
      links:
         - db:mysql
-     image: drupal:composer
-     # build: .
+     # image: guoxiangke/ddapi
+     build: .
      # ports:
      #   - "80"
      network_mode: "bridge"

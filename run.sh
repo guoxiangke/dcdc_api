@@ -4,7 +4,7 @@
 	git pull origin master
 	git submodule foreach git checkout .
 	git submodule foreach git pull origin master
-	
+
 	docker-compose -p $ProjectName down --remove-orphans
 	docker-compose -p $ProjectName  up -d  --build --remove-orphans --force-recreate
 
