@@ -19,4 +19,4 @@ RUN mkdir /var/www/drupal/config ; \
 COPY ./drupal/composer.json  /var/www/drupal/composer.json
 
 WORKDIR /var/www/drupal
-RUN composer install --no-interaction
+RUN composer update --no-interaction
