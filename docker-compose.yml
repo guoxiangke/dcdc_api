@@ -4,7 +4,7 @@ services:
    db:
      image: mariadb:latest
      volumes:
-       - ./.mysql/data:/var/lib/mysql
+       - db_data:/var/lib/mysql
        - /tmp:/sql:ro
      restart: always
      network_mode: "bridge"
@@ -19,8 +19,8 @@ services:
         - db
      links:
         - db:mysql
-     image: guoxiangke/ddapi
-     # build: .
+     # image: guoxiangke/ddapi
+     build: .
      ports:
        - "8082:80"
      network_mode: "bridge"
