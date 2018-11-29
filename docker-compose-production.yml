@@ -1,0 +1,45 @@
+version: '3.3'
+
+services:
+   db:
+     image: mariadb:latest
+     volumes:
+       - db_data:/var/lib/mysql
+       - /tmp:/sql:ro
+     restart: always
+     network_mode: "bridge"
+     environment:
+       MYSQL_ROOT_PASSWORD: drupal
+       MYSQL_DATABASE: drupal
+       MYSQL_USER: drupal
+       MYSQL_PASSWORD: drupal
+
+   drupal:
+     depends_on:
+        - db
+     links:
+        - db:mysql
+     # image: guoxiangke/ddapi
+     build: .
+     network_mode: "bridge"
+     restart: always
+     volumes:
+        - ./docker/php/uploads.ini:/usr/local/etc/php/conf.d/uploads.ini:ro
+        # change /var/www/html => /var/www/drupal/web
+        - ./docker/apache2/000-default.conf:/etc/apache2/sites-enabled/000-default.conf
+        - drupal_config:/var/www/drupal/config
+        - ./drupal/web/sites/default/files:/var/www/drupal/web/sites/default/files
+        - ./drupal/web/modules/custom:/var/www/drupal/web/modules/custom
+        - ./drupal/web/themes/custom:/var/www/drupal/web/themes/custom
+        - ./drupal/settings.php:/var/www/drupal/web/sites/default/settings.php
+        # bugs
+        - ./drupal/helper.inc:/var/www/drupal/web/modules/contrib/simplehtmldom/helper.inc
+     environment:
+        - VIRTUAL_HOST=api.yongbuzhixi.com
+        - LETSENCRYPT_HOST=api.yongbuzhixi.com
+        - LETSENCRYPT_EMAIL=dale.tel@139.com
+
+
+volumes:
+    db_data:
+    drupal_config:
